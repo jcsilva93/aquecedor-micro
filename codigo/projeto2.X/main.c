@@ -1,7 +1,7 @@
 /*
  * File:   main.c
  * Author: Jean Carlos da Silva       RA: 35212            Turma: T01
- *         Hugo Gomes Gandra          RA: 2016013845       Turma: T01  
+ *         
  *
  * Created on 16 de Novembro de 2020, 13:31
  */
@@ -25,7 +25,7 @@
 
 #define _XTAL_FREQ 4000000
 
-//VARIAVÉIS
+//VARIAVÃ‰IS
 unsigned int seg = 0;
 unsigned int min = 0;
 unsigned int hora = 12;
@@ -42,7 +42,7 @@ unsigned int aquecedor = 0;
 unsigned int nivel = 0;
 unsigned int ajustar = 0;
 
-//FUNÇÕES LCD
+//FUNÃ‡Ã•ES LCD
 void inicia_lcd();
 void envia_lcd_dado(char valor);
 void envia_lcd_comando(char RS);
@@ -130,7 +130,7 @@ void main(void){
                     }                    
                 }            
                 break;
-            case 2: //RELÓGIO                
+            case 2: //RELÃ“GIO                
                 envia_lcd_comando(0x80);
                 printf("     RELOGIO     ");
                 envia_lcd_comando(0xc0);
@@ -234,7 +234,7 @@ void main(void){
 void __interrupt() Interrupt(void) {
     
     if (PIR1bits.TMR1IF) {
-        //INCREMENTA RELÓGIO
+        //INCREMENTA RELÃ“GIO
         if (cont > 2) {
             seg++;
             cont = 0;
@@ -256,7 +256,7 @@ void __interrupt() Interrupt(void) {
         unsigned int voltage = (unsigned int) (ADRESH << 8) | (ADRESL);
         temp = voltage * 125 * 1/256;
         
-        //CHECA TEMPERATURA +/- 5º E HORA DE INICIAR
+        //CHECA TEMPERATURA +/- 5Âº E HORA DE INICIAR
         if (min == min_start && hora == hora_start){
                 check_time = 1;
             }else if (min == min_stop && hora == hora_stop){
